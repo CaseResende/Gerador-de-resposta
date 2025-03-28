@@ -1,10 +1,12 @@
+import unicodedata
+from datetime import datetime
+
+
 def descobrir_data():
     """
     -> Descobre a data atual do sistema
     :return: data_atual: Data atual do sistema
     """
-    from datetime import datetime
-
     data_atual = datetime.now()
 
     return data_atual
@@ -16,11 +18,21 @@ def formatar_data(data):
     :param data: Data a ser formatada
     :return: Data formatada
     """
-    from  time import strftime
-
     data_formatada = data.strftime('%d%m')
 
     return data_formatada
+
+
+def remover_acentos(texto):
+    """
+    -> Remove os acentos de um texto
+    :param texto: String a ser normalizada
+    :return: String sem acentos
+    """
+    return ''.join(
+        letra for letra in unicodedata.normalize('NFD', texto)
+        if unicodedata.category(letra) != 'Mn'
+    )
 
 
 def apresentar(data):
@@ -36,9 +48,33 @@ def apresentar(data):
         print('Boa tarde,')
     print()
 
+
 def exibir_linha():
     """
     -> Exibe uma linha separadora
-    :return: sem retorno
+    :return: Sem retorno
     """
     print('-' * 60)
+
+
+def criar_usuario(primeiro_nome, ultimo_nome):
+    """
+    -> Cria o usuário no formato primeiro_nome.ultimo_nome
+    :param primeiro_nome: Primeiro nome
+    :param ultimo_nome: Último nome
+    :return: Usuário criado
+    """
+    usuario = f'{primeiro_nome}.{ultimo_nome}'
+
+    return usuario
+
+
+def criar_senha(iniciais, data):
+    """
+    -> Cria a senha no formato Iniciais#DDMM
+    :param iniciais: Lista de iniciais do nome
+    :param data: Data atual
+    :return: Senha criada
+    """
+    return ''.join(iniciais) + f'#{data}'
+

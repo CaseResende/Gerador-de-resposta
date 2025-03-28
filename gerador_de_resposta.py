@@ -1,5 +1,5 @@
 # Importação das funções
-from utilidades import descobrir_data, formatar_data, apresentar, exibir_linha
+from utilidades import *
 
 # Inicialização da variável
 iniciais = list()
@@ -10,19 +10,22 @@ print('Qual é o assunto do chamado?')
 # Tratamento de exceções no menu
 try:
     escolha = int(input('[1] AD\n[2] E-mail\nDigite aqui: '))
+    if escolha not in [1, 2]:
+        raise ValueError
 
-except (ValueError, TypeError):
+except ValueError:
     print('Escolha inválida!')
 
 except KeyboardInterrupt:
-    print('')
+    print('\nEntrada interrompida pelo usuário.')
+
 else:
     nome_completo = str(input('Nome completo: ')).strip().lower()
     nome_separado = nome_completo.split()
 
-    # Coleta o primeiro e último nomes
-    primeiro_nome = nome_separado[0]
-    ultimo_nome = nome_separado[-1]
+    # Coleta o primeiro e último nomes sem acentos
+    primeiro_nome = remover_acentos(nome_separado[0])
+    ultimo_nome = remover_acentos(nome_separado[-1])
 
     # Exibe o nome completo formatado e captura as iniciais
     exibir_linha()
@@ -37,24 +40,23 @@ else:
     print()
     exibir_linha()
 
-    # Resposta
+    # Resposta do chamado
     apresentar(descobrir_data())
 
-    # Gera o usuário ou endereço de e-mail
+    # Cria o usuário ou endereço de e-mail
     if escolha == 1:
-        print(f'Usuário: {primeiro_nome}.{ultimo_nome}')
+        print(f'Usuário: {criar_usuario(primeiro_nome, ultimo_nome)}')
     elif escolha == 2:
-        print(f'E-mail: {primeiro_nome}.{ultimo_nome}@barbacena.mg.gov.br')
+        print(f'E-mail: {criar_usuario(primeiro_nome, ultimo_nome)}@barbacena.mg.gov.br')
 
-    # Gera a senha
-    print('Senha: ', end='')
-    for letra in iniciais:
-        print(letra, end='')
-    print(f'#{formatar_data(descobrir_data())}')
+    # Cria a senha
+    senha_criada = criar_senha(iniciais, formatar_data(descobrir_data()))
+    print(f'Senha: {senha_criada}')
     print()
     print('Att...')
     print()
 
 finally:
-    print('Programa finalizado!')
+    exibir_linha()
+    print('Fim da execução!')
     exibir_linha()
