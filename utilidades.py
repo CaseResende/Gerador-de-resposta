@@ -80,15 +80,17 @@ def criar_senha(iniciais, data):
 
 
 def mostrar_saudacao_final():
-    print("""Crie uma nova senha seguindo os critérios de segurança:
-    - A senha deve conter pelo menos 8 caracteres.
-    - Deve possuir, no mínimo, uma letra maiúscula.
-    - Deve conter, no mínimo, uma letra minúscula.
-    - Deve incluir, pelo menos, um número ou caracter especial (por exemplo, @, #, $, etc.).""")
+    """
+    -> Exibe uma mensagem de saudação final com orientações para nova senha
+    :return: Sem retorno
+    """
+    print('Crie uma nova senha seguindo os critérios de segurança:')
+    print(' - A senha deve conter pelo menos 8 caracteres.')
+    print(' - Deve possuir, no mínimo, uma letra maiúscula.')
+    print(' - Deve conter, no mínimo, uma letra minúscula.')
+    print(' - Deve incluir, pelo menos, um número ou caracter especial (por exemplo, @, #, $, etc.).')
     print('Após definir a nova senha, confirme a alteração.')
     print()
     print('Att...')
     print()
-
-
 
