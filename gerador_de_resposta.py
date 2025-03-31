@@ -55,15 +55,7 @@ else:
     print()
 
     # Saudação final
-    print("""Crie uma nova senha seguindo os critérios de segurança:
-- A senha deve conter pelo menos 8 caracteres.
-- Deve possuir, no mínimo, uma letra maiúscula.
-- Deve conter, no mínimo, uma letra minúscula.
-- Deve incluir, pelo menos, um número ou caracter especial (por exemplo, @, #, $, etc.).
-Após definir a nova senha, confirme a alteração.""")
-    print()
-    print('Att...')
-    print()
+    mostrar_saudacao_final()
 
 finally:
     exibir_linha()
