@@ -49,15 +49,6 @@ def apresentar(data):
     return f'\n{saudacao}\n\n'
 
 
-
-def exibir_linha():
-    """
-    -> Exibe uma linha separadora
-    :return: Retorna uma linha separadora
-    """
-    return '-' * 60 + '\n'
-
-
 def criar_usuario(primeiro_nome, ultimo_nome):
     """
     -> Cria o usuário no formato primeiro_nome.ultimo_nome
@@ -94,5 +85,3 @@ def mostrar_saudacao_final():
     'Após definir a nova senha, confirme a alteração.\n\n'    
     'Att...\n\n'
     )
-
-

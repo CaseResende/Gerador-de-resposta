@@ -5,24 +5,28 @@ Este projeto foi desenvolvido para auxiliar na geração de padrões de resposta
 
 O programa recebe o nome completo do usuário, formata a exibição do nome e gera automaticamente uma saudação, um nome de usuário ou e-mail, além de criar uma senha baseada em suas iniciais e na data atual.
 
+O projeto também possui uma interface gráfica interativa utilizando a biblioteca **Flet**, tornando o uso mais intuitivo e acessível.
+
 ## Funcionalidades
 - **Formata o nome do usuário** com as iniciais em maiúsculo.
 - **Remove acentos** para a geração do nome de usuário e e-mail.
 - **Permite escolher** entre gerar um **usuário do Active Directory (AD)** ou um **e-mail institucional**.
 - **Gera uma senha** no formato `Iniciais#DDMM`.
 - **Exibe uma mensagem de saudação** baseada no horário atual.
+- **Interface gráfica interativa** para facilitar o uso do sistema.
 
 ## Estrutura do Projeto
 ```
 /
 ├── gerador_de_resposta.py
 ├── utilidades.py
+├── interface_flet.py
 ├── README.md
 ```
 
 ## 📂 Arquivos
 ### `gerador_de_resposta.py`
-Arquivo principal que gerencia a entrada do usuário e exibe os resultados formatados.
+Arquivo principal que gerencia a entrada do usuário e retorna os resultados formatados.
 
 ### `utilidades.py`
 Módulo com funções auxiliares:
@@ -30,57 +34,67 @@ Módulo com funções auxiliares:
 - `formatar_data(data)`: Retorna a data no formato `DDMM`.
 - `remover_acentos(texto)`: Remove os acentos de uma string.
 - `apresentar(data)`: Exibe uma mensagem de saudação baseada no horário atual.
-- `exibir_linha()`: Exibe uma linha separadora.
 - `criar_usuario(primeiro_nome, ultimo_nome)`: Cria o usuário no formato `primeiro_nome.ultimo_nome`.
 - `criar_senha(iniciais, data)`: Cria a senha no formato `Iniciais#DDMM`.
 - `mostrar_saudacao_final`: Exibe uma mensagem de saudação final com orientações para nova senha.
 
+### `interface_flet.py`
+Arquivo que implementa a interface gráfica utilizando a biblioteca **Flet**, permitindo uma interação mais amigável com o usuário.
+
 ## 🚀 Exemplo de Uso
 ### 📥 Entrada:
-```
+
 Qual é o assunto do chamado?
-[1] AD
-[2] E-mail
-Digite aqui: 1
+
+Opção: AD | E-mail
+
 Nome completo: joão SILVA JosÉ
-```
+
 ### 📤 Saída:
-```
-------------------------------------------------------------
-Nome formatado: João Silva José 
-------------------------------------------------------------
+Nome formatado: João Silva José
 
 Boa tarde,
 
 Usuário: joao.jose
+
 Senha: Jsj#3103
 
 Crie uma nova senha seguindo os critérios de segurança:
- - A senha deve conter pelo menos 8 caracteres.
- - Deve possuir, no mínimo, uma letra maiúscula.
- - Deve conter, no mínimo, uma letra minúscula.
- - Deve incluir, pelo menos, um número ou caracter especial (por exemplo, @, #, $, etc.).
-Após definir a nova senha, confirme a alteração.
+
+A senha deve conter pelo menos 8 caracteres.
+
+Deve possuir, no mínimo, uma letra maiúscula.
+
+Deve conter, no mínimo, uma letra minúscula.
+
+Deve incluir, pelo menos, um número ou caracter especial (por exemplo, @, #, $, etc.). Após definir a nova senha, confirme a alteração.
 
 Att...
 
-------------------------------------------------------------
-Fim da execução!
-------------------------------------------------------------
-```
 
 ## 🛠 Como Executar
+### Via Interface Gráfica
+1. Certifique-se de ter o Python instalado.
+2. Clone ou baixe este repositório.
+3. Execute o arquivo da interface gráfica:
+   ```sh
+   interface_flet.py
+   ```
+4. Preencha o formulário com as informações solicitadas (escolha entre AD ou E-mail e nome completo) e clique em Gerar resposta.
+
+### Via Linha de Comando (sem interface gráfica)
 1. Certifique-se de ter o Python instalado.
 2. Clone ou baixe este repositório.
 3. Execute o arquivo principal:
    ```sh
-   python gerador_de_resposta.py
+   gerador_de_resposta.py
    ```
 4. Escolha a opção desejada e insira o nome completo.
 
 ## 🔥 Melhorias Futuras
-- Criar uma interface gráfica para facilitar o uso.
+- Melhorar a interface gráfica com mais recursos interativos.
 - Permitir customização do padrão de senha.
+- Implementar validação mais robusta de entradas.
 
 ## 🤝 Contribuições
 Contribuições são bem-vindas! Se você deseja melhorar este projeto, por favor, siga os passos abaixo:
