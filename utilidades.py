@@ -41,20 +41,21 @@ def apresentar(data):
     :param data: Data de referência
     :return: Sem retorno
     """
-    print()
     if data.hour < 12:
-        print('Bom dia,')
+        saudacao = 'Bom dia,'
     else:
-        print('Boa tarde,')
-    print()
+        saudacao = 'Boa tarde,'
+
+    return f'\n{saudacao}\n\n'
+
 
 
 def exibir_linha():
     """
     -> Exibe uma linha separadora
-    :return: Sem retorno
+    :return: Retorna uma linha separadora
     """
-    print('-' * 60)
+    return '-' * 60 + '\n'
 
 
 def criar_usuario(primeiro_nome, ultimo_nome):
@@ -84,13 +85,14 @@ def mostrar_saudacao_final():
     -> Exibe uma mensagem de saudação final com orientações para nova senha
     :return: Sem retorno
     """
-    print('Crie uma nova senha seguindo os critérios de segurança:')
-    print(' - A senha deve conter pelo menos 8 caracteres.')
-    print(' - Deve possuir, no mínimo, uma letra maiúscula.')
-    print(' - Deve conter, no mínimo, uma letra minúscula.')
-    print(' - Deve incluir, pelo menos, um número ou caracter especial (por exemplo, @, #, $, etc.).')
-    print('Após definir a nova senha, confirme a alteração.')
-    print()
-    print('Att...')
-    print()
+    return(
+    'Crie uma nova senha seguindo os critérios de segurança:\n'
+    ' - A senha deve conter pelo menos 8 caracteres.\n'
+    ' - Deve possuir, no mínimo, uma letra maiúscula.\n'
+    ' - Deve conter, no mínimo, uma letra minúscula.\n'
+    ' - Deve incluir, pelo menos, um número ou caracter especial (por exemplo, @, #, $, etc.).\n'
+    'Após definir a nova senha, confirme a alteração.\n\n'    
+    'Att...\n\n'
+    )
+
 
