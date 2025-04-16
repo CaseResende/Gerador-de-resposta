@@ -9,7 +9,6 @@ def gerar_texto_resposta(escolha: str, nome_completo: str) -> str:
     primeiro_nome = remover_acentos(nome_separado[0])
     ultimo_nome = remover_acentos(nome_separado[-1])
 
-
     resposta += 'Nome formatado: '
 
     for indice, nome in enumerate(nome_separado):
@@ -18,8 +17,8 @@ def gerar_texto_resposta(escolha: str, nome_completo: str) -> str:
             iniciais.append(nome[0].upper())
         else:
             iniciais.append(nome[0])
-    resposta += '\n'
 
+    resposta += '\n'
 
     data = descobrir_data()
     resposta += apresentar(data)
