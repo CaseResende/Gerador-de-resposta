@@ -4,7 +4,11 @@ from gerador_de_resposta import gerar_texto_resposta
 
 def main(pagina: ft.Page):
     pagina.theme_mode = ft.ThemeMode.LIGHT
+    pagina.window_frameless = True
+    pagina.title = "Gerador de Respostas GLPI"
+    pagina.bgcolor=ft.colors.INDIGO
     pagina.horizontal_alignment = ft.MainAxisAlignment.CENTER
+    pagina.scroll = ft.ScrollMode.AUTO
 
     # Campos
     opcao_menu = ft.Dropdown(
@@ -15,12 +19,12 @@ def main(pagina: ft.Page):
             ft.dropdown.Option('AD'),
             ft.dropdown.Option('E-mail')
         ],
-        width=300
+        width=150
     )
 
     nome_completo = ft.TextField(
         border_color=ft.colors.LIGHT_BLUE,
-        label='Nome completo',
+        label='Digite o nome completo',
         autofocus=True,
         width=300
     )
@@ -68,33 +72,8 @@ def main(pagina: ft.Page):
         text='Gerar resposta',
         on_click=gerar_resposta
     )
-
-    # Menu
-    menu = ft.Container(
-        padding=ft.padding.all(30),
-        alignment=ft.alignment.center,
-        content=ft.Column(
-            alignment=ft.MainAxisAlignment.CENTER,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            controls=[
-                ft.Text(
-                    value='Qual é o assunto do chamado?',
-                    color=ft.colors.BLACK,
-                    size=18,
-                ),
-                ft.ResponsiveRow(
-                    col=12,
-                    alignment=ft.MainAxisAlignment.CENTER,
-                    controls=[opcao_menu]
-                )
-            ]
-        )
-    )
-
     # Nome
     nome = ft.Container(
-        padding=ft.padding.all(30),
-        alignment=ft.alignment.center,
         content=ft.Column(
             controls=[
                 ft.Text(value='Nome completo'),
@@ -105,15 +84,41 @@ def main(pagina: ft.Page):
         )
     )
 
+    # Menu
+    menu = ft.Container(
+        padding=ft.padding.all(30),
+        alignment=ft.alignment.center_left,
+        content=ft.Column(
+            alignment=ft.MainAxisAlignment.START,
+            horizontal_alignment=ft.CrossAxisAlignment.START,
+            controls=[
+                ft.Text(
+                    value='Qual é o assunto do chamado?',
+                    color=ft.colors.BLACK,
+                    size=18,
+                ),
+                ft.ResponsiveRow(
+                    col=12,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    controls=[opcao_menu]
+                ),
+                nome
+            ]
+        )
+    )
+
+
+
     # Box principal
     layout = ft.Container(
+        width=500,
         expand=True,
         alignment=ft.alignment.center,
         margin=ft.margin.all(30),
         bgcolor=ft.colors.WHITE,
         border_radius=10,
-        shadow=ft.BoxShadow(blur_radius=200, color=ft.colors.LIGHT_BLUE),
-        content=ft.ResponsiveRow(controls=[menu, nome, resposta_gerada])
+        shadow=ft.BoxShadow(blur_radius=200, color=ft.colors.CYAN),
+        content=ft.ResponsiveRow(controls=[menu, resposta_gerada])
     )
 
     # Adição à página
