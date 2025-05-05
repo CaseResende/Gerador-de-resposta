@@ -13,10 +13,11 @@ def gerar_texto_resposta(escolha: str, nome_completo: str) -> str:
 
     for indice, nome in enumerate(nome_separado):
         resposta += nome.capitalize() + ' '
-        if indice == 0:
-            iniciais.append(nome[0].upper())
-        else:
-            iniciais.append(nome[0])
+        if nome not in 'de, da, do, dos, das':
+            if indice == 0:
+                iniciais.append(nome[0].upper())
+            else:
+                iniciais.append(nome[0])
 
     resposta += '\n'
 

@@ -16,7 +16,7 @@ def formatar_data(data):
     """
     -> Formata a data para usar somente dia e mês
     :param data: Data a ser formatada
-    :return: Data formatada
+    :return: data_formatada: Data formatada
     """
     data_formatada = data.strftime('%d%m')
 
@@ -39,7 +39,7 @@ def apresentar(data):
     """
     -> Exibe uma saudação com base no horário
     :param data: Data de referência
-    :return: Sem retorno
+    :return: Saudação formatada
     """
     if data.hour < 12:
         saudacao = 'Bom dia,'
@@ -74,7 +74,7 @@ def criar_senha(iniciais, data):
 def mostrar_saudacao_final():
     """
     -> Exibe uma mensagem de saudação final com orientações para nova senha
-    :return: Sem retorno
+    :return: Mensagem de saudação final
     """
     return(
     'Crie uma nova senha seguindo os critérios de segurança:\n'
